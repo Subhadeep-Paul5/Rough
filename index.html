@@ -61,23 +61,37 @@
         </div>
     </form>
 
-                <div class="mt-4">
+                <form id="substack-form" class="mt-4">
     <div class="flex flex-col sm:flex-row">
-        <iframe src="https://subhadeeppaul5.substack.com/embed" 
-            class="bg-black w-full h-40 px-6 py-2 border-4 border-dashed border-white">
-        </iframe>
-        <button onclick="openSubstack()" 
+        <input type="email" id="email-input" placeholder="Enter your email" required
+            class="bg-black text-xl text-white w-full px-6 py-2 border-4 border-dashed border-white">
+        <button type="submit"
             class="bg-white font-serif text-xl text-black font-bold px-4 py-2 border-4 border-dashed border-white">
             Subscribe
         </button>
     </div>
-</div>
+</form>
 
 <script>
-    function openSubstack() {
-        window.open('https://subhadeeppaul5.substack.com/', '_blank');
-    }
-</script>
+    document.getElementById("substack-form").addEventListener("submit", async function(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        let email = document.getElementById("email-input").value;
+        let substackUrl = "https://subhadeeppaul5.substack.com/api/v1/free";
+
+        let response = await fetch(substackUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: email })
+        });
+
+        if (response.ok) {
+            alert("Subscribed successfully!");
+        } else {
+            alert("Subscription failed. Try again.");
+        }
+    });
+            </script>
             </div>
             
         </div>
