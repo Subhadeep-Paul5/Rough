@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE SMALL COMPANY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFFFFF',
+                        secondary: '#4a5568',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Source Sans Pro', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-black font-sans">
+    <!-- Header -->
+    <header class="border-b-4 border-dashed border-white mt-10">
+        <div class="container mx-auto px-4 py-6">
+            <div class="text-center">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-serif font-bold text-primary">THE SMALL COMPANY</h1>
+                    <p class="text-sm text-gray-600 mt-1"></p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-8">
+        <div class="container mx-auto p-4">
+            <div class="mb-8 md:mb-0">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary mb-4">Why Did We Create This?</h2>
+                <p class="text-lg text-gray-400">We wanted to understand how great companies grew and the strategies they used, so we created this to share what we’ve learned with everyone.</p>
+            </div>
+            <div class="mx-auto shadow-lg rounded-lg">
+                <h2 class="text-3xl md:text-4xl font-serif text-primary font-bold">Our Newsletter</h2>
+                <form id="substack-form-hero" class="mt-4">
+                    <div class="flex flex-col sm:flex-row">
+                        <input type="email" id="email-input-hero" name="email" placeholder="Enter your email" required
+                            class="bg-black text-xl text-white w-full px-6 py-2 border-4 border-dashed border-white">
+                        <button type="submit"
+                            class="bg-white font-serif text-xl text-black font-bold px-4 py-2 border-4 border-dashed border-white">
+                            Subscribe
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Articles -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-serif font-bold text-primary mb-8 pb-2 border-b-4 border-dashed border-white">Featured Articles</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Article 1 -->
+                <article class="border-4 border-dashed border-white overflow-hidden shadow-md hover:shadow-2xl transition duration-300">
+                    <img src="apple.jpg" alt="Apple's Business Strategy" class="w-full h-48 object-cover">
+                    <div class="border-t-4 border-dashed border-white p-6">
+                        <h3 class="text-xl font-serif font-bold text-primary mt-2 mb-3">Why Apple is More Than Just a Tech Company</h3>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white border-t-4 border-dashed border-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-serif font-bold mb-4">THE SMALL COMPANY</h3>
+                    <p class="text-lg text-gray-400">We share what we learn.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-medium mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-lg text-gray-400 hover:text-white transition">Archives</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-medium mb-4">Newsletter</h4>
+                    <form id="substack-form-footer" class="mt-4">
+                        <div class="flex flex-row">
+                            <input type="email" id="email-input-footer" name="email" placeholder="Enter your email" required
+                                class="bg-black text-xl text-white px-6 py-2 border-4 border-dashed border-white flex-grow">
+                            <button type="submit"
+                                class="bg-white font-serif text-xl text-black font-bold px-6 py-2 border-4 border-dashed border-white">
+                                Subscribe
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 THE SMALL COMPANY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Function to handle form submissions
+        function handleFormSubmission(formId, inputId) {
+            document.getElementById(formId).addEventListener("submit", function(event) {
+                event.preventDefault();
+                let email = document.getElementById(inputId).value;
+                let substackUrl = `https://subhadeeppaul5.substack.com/subscribe?email=${encodeURIComponent(email)}`;
+                window.location.href = substackUrl;
+            });
+        }
+
+        // Attach event listeners to both forms
+        handleFormSubmission("substack-form-hero", "email-input-hero");
+        handleFormSubmission("substack-form-footer", "email-input-footer");
+    </script>
+</body>
+  </html>
