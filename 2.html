@@ -3,73 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi Options Calculator</title>
+    <title>Apple-Style Calculator</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .btn {
+            @apply w-16 h-16 text-white text-2xl rounded-full flex items-center justify-center cursor-pointer transition-all;
+        }
+        .btn-gray { @apply bg-gray-700 hover:bg-gray-600; }
+        .btn-orange { @apply bg-orange-500 hover:bg-orange-400; }
+        .btn-light { @apply bg-gray-400 text-black hover:bg-gray-300; }
+    </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<body class="bg-black flex items-center justify-center min-h-screen">
 
-    <div class="bg-white p-6 rounded-lg shadow-lg w-80">
-        <h2 class="text-xl font-semibold text-center mb-4">Multi Options Calculator</h2>
+    <div class="bg-black p-4 rounded-lg shadow-lg w-80">
+        <div id="display" class="text-white text-5xl text-right p-4">0</div>
 
-        <div class="mb-4">
-            <label class="block text-sm font-medium">Select Operation:</label>
-            <select id="operation" class="w-full p-2 border rounded mt-1">
-                <option value="add">Addition (+)</option>
-                <option value="subtract">Subtraction (-)</option>
-                <option value="multiply">Multiplication (×)</option>
-                <option value="divide">Division (÷)</option>
-                <option value="percentage">Percentage (%)</option>
-            </select>
-        </div>
+        <div class="grid grid-cols-4 gap-2">
+            <button class="btn btn-light" onclick="clearDisplay()">AC</button>
+            <button class="btn btn-light" onclick="invertSign()">±</button>
+            <button class="btn btn-light" onclick="percentage()">%</button>
+            <button class="btn btn-orange" onclick="setOperation('/')">÷</button>
 
-        <div class="mb-4">
-            <label class="block text-sm font-medium">Enter First Number:</label>
-            <input type="number" id="num1" class="w-full p-2 border rounded mt-1" placeholder="First Number">
-        </div>
+            <button class="btn btn-gray" onclick="appendNumber(7)">7</button>
+            <button class="btn btn-gray" onclick="appendNumber(8)">8</button>
+            <button class="btn btn-gray" onclick="appendNumber(9)">9</button>
+            <button class="btn btn-orange" onclick="setOperation('*')">×</button>
 
-        <div class="mb-4">
-            <label class="block text-sm font-medium">Enter Second Number:</label>
-            <input type="number" id="num2" class="w-full p-2 border rounded mt-1" placeholder="Second Number">
-        </div>
+            <button class="btn btn-gray" onclick="appendNumber(4)">4</button>
+            <button class="btn btn-gray" onclick="appendNumber(5)">5</button>
+            <button class="btn btn-gray" onclick="appendNumber(6)">6</button>
+            <button class="btn btn-orange" onclick="setOperation('-')">−</button>
 
-        <button onclick="calculate()" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Calculate</button>
+            <button class="btn btn-gray" onclick="appendNumber(1)">1</button>
+            <button class="btn btn-gray" onclick="appendNumber(2)">2</button>
+            <button class="btn btn-gray" onclick="appendNumber(3)">3</button>
+            <button class="btn btn-orange" onclick="setOperation('+')">+</button>
 
-        <div class="mt-4 text-lg text-center font-semibold">
-            Result: <span id="result" class="text-blue-600">0</span>
+            <button class="btn btn-gray col-span-2 w-full" onclick="appendNumber(0)">0</button>
+            <button class="btn btn-gray" onclick="appendNumber('.')">.</button>
+            <button class="btn btn-orange" onclick="calculateResult()">=</button>
         </div>
     </div>
 
     <script>
-        function calculate() {
-            let num1 = parseFloat(document.getElementById("num1").value);
-            let num2 = parseFloat(document.getElementById("num2").value);
-            let operation = document.getElementById("operation").value;
-            let result = 0;
+        let currentInput = "";
+        let previousInput = "";
+        let operation = null;
 
-            if (isNaN(num1) || isNaN(num2)) {
-                alert("Please enter valid numbers.");
-                return;
+        function appendNumber(number) {
+            if (currentInput.length < 10) {
+                if (number === "." && currentInput.includes(".")) return;
+                currentInput += number;
+                updateDisplay();
             }
+        }
+
+        function setOperation(op) {
+            if (currentInput === "") return;
+            if (previousInput !== "") calculateResult();
+            operation = op;
+            previousInput = currentInput;
+            currentInput = "";
+        }
+
+        function calculateResult() {
+            if (previousInput === "" || currentInput === "") return;
+            let result;
+            let num1 = parseFloat(previousInput);
+            let num2 = parseFloat(currentInput);
 
             switch (operation) {
-                case "add":
-                    result = num1 + num2;
-                    break;
-                case "subtract":
-                    result = num1 - num2;
-                    break;
-                case "multiply":
-                    result = num1 * num2;
-                    break;
-                case "divide":
-                    result = num2 !== 0 ? num1 / num2 : "Cannot divide by zero";
-                    break;
-                case "percentage":
-                    result = (num1 / 100) * num2;
-                    break;
+                case "+": result = num1 + num2; break;
+                case "-": result = num1 - num2; break;
+                case "*": result = num1 * num2; break;
+                case "/": result = num2 !== 0 ? num1 / num2 : "Error"; break;
             }
 
-            document.getElementById("result").innerText = result;
+            currentInput = result.toString().slice(0, 10);
+            previousInput = "";
+            operation = null;
+            updateDisplay();
+        }
+
+        function clearDisplay() {
+            currentInput = "";
+            previousInput = "";
+            operation = null;
+            updateDisplay();
+        }
+
+        function invertSign() {
+            if (currentInput !== "") {
+                currentInput = (parseFloat(currentInput) * -1).toString();
+                updateDisplay();
+            }
+        }
+
+        function percentage() {
+            if (currentInput !== "") {
+                currentInput = (parseFloat(currentInput) / 100).toString();
+                updateDisplay();
+            }
+        }
+
+        function updateDisplay() {
+            document.getElementById("display").innerText = currentInput || "0";
         }
     </script>
 
