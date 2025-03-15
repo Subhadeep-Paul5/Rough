@@ -5,11 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Binary Converter</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Source Sans Pro', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-white text-black flex flex-col items-center justify-center min-h-screen">
+<body class="bg-white text-black font-serif flex flex-col items-center justify-center min-h-screen">
 
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-        <h1 class="text-2xl font-bold text-center mb-4">Binary Converter</h1>
+        <h1 class="text-3xl md:text-4xl font-bold text-center mb-4">Binary Converter</h1>
 
         
 
@@ -24,12 +36,12 @@
 
         
         <!-- Convert Button -->
-        <button onclick="convert()" class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded">Convert</button>
+        <button onclick="convert()" class="w-full mt-4 border-4 border-dashed border-black py-2 rounded">Convert</button>
 
         <!-- Output Box with Mini Copy Button -->
         <div class="relative mt-4">
             <textarea id="outputText" class="w-full p-2 border-4 border-dashed border-black focus:outline-none" rows="4" readonly placeholder="Output will appear here..."></textarea>
-            <button onclick="copyToClipboard()" class="absolute top-2 right-2 bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm">📋</button>
+            <button onclick="copyToClipboard()" class="absolute top-2 right-2 border-4 border-dashed border-black px-3 py-1 rounded text-sm">📋</button>
         </div>
     </div>
 
