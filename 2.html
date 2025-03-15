@@ -5,12 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apple StandMode Clock</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFFFFF',
+                        secondary: '#4a5568',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Source Sans Pro', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
 </head>
 <body class="flex items-center justify-center h-screen bg-black text-white">
     <div class="flex flex-col items-center">
-        <div id="day" class="text-3xl font-semibold"></div>
-        <div id="date" class="text-xl mb-4"></div>
-        <div id="time" class="text-6xl font-bold"></div>
+        <div id="day" class="text-3xl font-serif font-semibold"></div>
+        <div id="date" class="text-xl font-serif mb-4"></div>
+        <div id="time" class="text-6xl font-serif font-bold"></div>
     </div>
 
     <script>
