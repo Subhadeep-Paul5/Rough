@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morse Code Converter</title>
+    <title>Binary Converter</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen">
 
     <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md">
-        <h1 class="text-2xl font-bold text-center mb-4">Morse Code Converter</h1>
+        <h1 class="text-2xl font-bold text-center mb-4">Binary Converter</h1>
 
-        <textarea id="inputText" class="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4" placeholder="Enter text or Morse code..."></textarea>
+        <textarea id="inputText" class="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4" placeholder="Enter text or binary..."></textarea>
         
         <div class="flex justify-between mt-4">
-            <button onclick="convertToMorse()" class="w-1/2 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded mr-2">Text to Morse</button>
-            <button onclick="convertToText()" class="w-1/2 bg-green-500 hover:bg-green-600 text-white py-2 rounded ml-2">Morse to Text</button>
+            <button onclick="convertToBinary()" class="w-1/2 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded mr-2">Text to Binary</button>
+            <button onclick="convertToText()" class="w-1/2 bg-green-500 hover:bg-green-600 text-white py-2 rounded ml-2">Binary to Text</button>
         </div>
 
         <textarea id="outputText" class="w-full p-2 mt-4 rounded bg-gray-700 text-white focus:outline-none" rows="4" readonly placeholder="Output will appear here..."></textarea>
@@ -24,36 +24,22 @@
     </div>
 
     <script>
-        const morseCodeMap = {
-            'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
-            'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
-            'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
-            'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
-            'Y': '-.--', 'Z': '--..', '0': '-----', '1': '.----', '2': '..---', '3': '...--',
-            '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.',
-            ' ': '/', '.': '.-.-.-', ',': '--..--', '?': '..--..', "'": '.----.', 
-            '!': '-.-.--', '/': '-..-.', '(': '-.--.', ')': '-.--.-', '&': '.-...',
-            ':': '---...', ';': '-.-.-.', '=': '-...-', '+': '.-.-.', '-': '-....-',
-            '_': '..--.-', '"': '.-..-.', '$': '...-..-', '@': '.--.-.'
+        const textToBinary = (text) => {
+            return text.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
         };
 
-        const textToMorse = (text) => {
-            return text.toUpperCase().split('').map(char => morseCodeMap[char] || char).join(' ');
+        const binaryToText = (binary) => {
+            return binary.split(' ').map(bin => String.fromCharCode(parseInt(bin, 2))).join('');
         };
 
-        const morseToText = (morse) => {
-            const reversedMap = Object.fromEntries(Object.entries(morseCodeMap).map(([key, value]) => [value, key]));
-            return morse.split(' ').map(code => reversedMap[code] || '?').join('');
-        };
-
-        const convertToMorse = () => {
+        const convertToBinary = () => {
             const input = document.getElementById('inputText').value;
-            document.getElementById('outputText').value = textToMorse(input);
+            document.getElementById('outputText').value = textToBinary(input);
         };
 
         const convertToText = () => {
             const input = document.getElementById('inputText').value;
-            document.getElementById('outputText').value = morseToText(input);
+            document.getElementById('outputText').value = binaryToText(input);
         };
 
         const copyToClipboard = () => {
