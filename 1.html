@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE SMALL COMPANY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFFFFF',
+                        secondary: '#4a5568',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Source Sans Pro', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-black font-sans">
+    <!-- Header -->
+    <header class="border-b-4 border-dashed border-white mt-10">
+        <div class="container mx-auto px-4 py-4">
+            <div class="text-center">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-serif font-bold text-primary">Subhadeep Paul</h1>
+                    <div class="mt-4 flex justify-left mb-16 space-x-4">
+        <a href="https://x.com/Subhadeep_Paul5?t=dZD27rVag-UfFuHXE4Pptg&s=09" class="text-primary transition-colors duration-300">
+            <i data-lucide="twitter" class="w-8 h-8"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/subhadeep-paul5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="text-primary transition-colors duration-300">
+            <i data-lucide="linkedin" class="w-8 h-8"></i>
+        </a>
+        <a href="https://www.instagram.com/subhadeep.paul5/profilecard/?igsh=a21wbDh2ZWw5cTZh" class="text-primary transition-colors duration-300">
+            <i data-lucide="instagram" class="w-8 h-8"></i>
+        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section>
+        <div class="container mx-auto mt-6 p-4">
+            <div class="mb-6 md:mb-4">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary mb-4">ABOUT ME</h2>
+                <p class="text-lg md:text-xl text-gray-400">Hii, I’m Subhadeep Paul, a high school student from Assam, India. I love sharing valuable knowledge that I learn and enjoy talking a lot! Sometimes, I talk so much that I might even annoy you.
+                <br><br>
+                I also love listening to music, and some of my favorite songs give me goosebumps. They motivate me to keep working, but my biggest motivation is my family, whom I love the most. I believe that family comes before everything.
+              </p>
+            </div>
+            <div class="mx-auto shadow-lg rounded-lg">
+                <h2 class="text-3xl md:text-4xl font-serif text-primary font-bold">Our Newsletter</h2>
+                <form id="substack-form-hero" class="mt-4">
+                    <div class="flex flex-col sm:flex-row">
+                        <input type="email" id="email-input-hero" name="email" placeholder="Enter your email" required
+                            class="bg-black text-xl text-white w-full px-6 py-2 border-4 border-dashed border-white">
+                        <button type="submit"
+                            class="bg-white font-serif text-xl text-black font-bold px-4 py-2 border-4 border-dashed border-white">
+                            Subscribe
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Articles -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-serif font-bold text-primary mb-8 pb-2 border-b-4 border-dashed border-white">Featured Articles</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Article 1 -->
+                <a href="https://open.substack.com/pub/subhadeeppaul5/p/why-apple-is-more-than-just-a-tech?r=58f6ae&utm_campaign=post&utm_medium=web&showWelcomeOnShare=false" class="block transition-transform duration-300 active:scale-105">
+                <article class="border-4 border-dashed border-white overflow-hidden shadow-md hover:shadow-2xl transition duration-300">
+                    <img src="apple.jpg" alt="Apple's Business Strategy" class="w-full h-48 object-cover">
+                    <div class="border-t-4 border-dashed border-white p-6">
+                        <h3 class="text-xl font-serif font-bold text-primary mt-2 mb-3">Why Apple is More Than Just a Tech Company</h3>
+                    </div>
+                </article>
+                </a>
+
+                
+                <a href="#" class="block transition-transform duration-300 active:scale-105">
+                <article class="border-4 border-dashed border-white overflow-hidden shadow-md hover:shadow-2xl transition duration-300">
+                    <img src="Microsoft.jpg" alt="Microsoft's Business Strategy" class="w-full h-48 object-cover">
+                    <div class="border-t-4 border-dashed border-white p-6">
+                        <h3 class="text-xl font-serif font-bold text-primary mt-2 mb-3">How Did Microsoft Grow Its Business?
+                        </h3>
+                    </div>
+                </article>
+                </a>
+            </div>
+            <div class="flex mt-8 items-center justify-center">
+  <a href="">
+    <button class="border-4 border-dashed border-white bg-black font-serif text-white px-4 py-2 transition-all duration-200 active:scale-110 active:text-xl">
+      READ MORE
+    </button>
+  </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white border-t-4 border-dashed border-white">
+        <div class="container mx-auto mt-10 px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-serif font-bold mb-2">THE SMALL COMPANY</h3>
+                    <p class="text-lg text-gray-400">We share what we learn.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-lg text-gray-400 hover:text-white transition">Archives</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-medium mb-2">Newsletter</h4>
+                    <form id="substack-form-footer" class="mt-4">
+    <div class="flex flex-col">
+        <input type="email" id="email-input-footer" name="email" placeholder="Enter your email" required
+            class="bg-black text-xl text-white w-full px-6 py-2 border-4 border-dashed border-white">
+        <button type="submit"
+            class="bg-white font-serif text-xl text-black font-bold w-full px-6 py-2 border-4 border-dashed border-white">
+            Subscribe
+        </button>
+    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-4 text-center text-gray-400 text-sm">
+                <p class="mb-4">&copy; 2025 THE SMALL COMPANY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Function to handle form submissions
+        function handleFormSubmission(formId, inputId) {
+            document.getElementById(formId).addEventListener("submit", function(event) {
+                event.preventDefault();
+                let email = document.getElementById(inputId).value;
+                let substackUrl = `https://subhadeeppaul5.substack.com/subscribe?email=${encodeURIComponent(email)}`;
+                window.location.href = substackUrl;
+            });
+        }
+
+        // Attach event listeners to both forms
+        handleFormSubmission("substack-form-hero", "email-input-hero");
+        handleFormSubmission("substack-form-footer", "email-input-footer");
+    </script>
+</body>
+                  </html>
