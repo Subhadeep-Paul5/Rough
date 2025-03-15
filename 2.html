@@ -3,53 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Dictionary</title>
+    <title>Morse Code Converter</title>
+    <script src="script.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen">
 
-    <div class="w-full max-w-md bg-white shadow-md rounded-lg p-6">
-        <h1 class="text-2xl font-bold text-center mb-4">Live Dictionary</h1>
+    <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md">
+        <h1 class="text-2xl font-bold text-center mb-4">Morse Code Converter</h1>
+
+        <textarea id="inputText" class="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4" placeholder="Enter text or Morse code..."></textarea>
         
-        <div class="flex items-center border border-gray-300 rounded-lg overflow-hidden">
-            <input type="text" id="searchBox" placeholder="Type a word..." 
-                class="w-full p-2 outline-none" oninput="filterWords()" />
+        <div class="flex justify-between mt-4">
+            <button onclick="convertToMorse()" class="w-1/2 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded mr-2">Text to Morse</button>
+            <button onclick="convertToText()" class="w-1/2 bg-green-500 hover:bg-green-600 text-white py-2 rounded ml-2">Morse to Text</button>
         </div>
 
-        <div id="wordList" class="mt-4 max-h-80 overflow-y-auto"></div>
+        <textarea id="outputText" class="w-full p-2 mt-4 rounded bg-gray-700 text-white focus:outline-none" rows="4" readonly placeholder="Output will appear here..."></textarea>
+
+        <button onclick="copyToClipboard()" class="w-full mt-4 bg-yellow-500 hover:bg-yellow-600 text-white py-2 rounded">Copy</button>
     </div>
-
-    <script>
-        let allWords = []; // Store all words
-
-        // Fetch words from Dictionary API
-        async function fetchWords() {
-            try {
-                const response = await fetch("https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt");
-                const text = await response.text();
-                allWords = text.split("\n").slice(0, 5000); // Limit to 5000 words for performance
-                displayWords(allWords);
-            } catch (error) {
-                document.getElementById("wordList").innerHTML = `<p class="text-red-500">Failed to load words.</p>`;
-            }
-        }
-
-        // Display words in the list
-        function displayWords(words) {
-            const wordListDiv = document.getElementById("wordList");
-            wordListDiv.innerHTML = words.map(word => `<p class="p-2 border-b">${word}</p>`).join("");
-        }
-
-        // Filter words dynamically
-        function filterWords() {
-            const searchQuery = document.getElementById("searchBox").value.toLowerCase();
-            const filteredWords = allWords.filter(word => word.startsWith(searchQuery));
-            displayWords(filteredWords);
-        }
-
-        // Load words on page load
-        fetchWords();
-    </script>
 
 </body>
 </html>
