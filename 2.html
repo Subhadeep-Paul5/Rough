@@ -3,114 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apple-Style Calculator</title>
+    <title>Apple StandMode Clock</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .btn {
-            @apply w-16 h-16 text-white text-2xl rounded-full flex items-center justify-center cursor-pointer transition-all;
-        }
-        .btn-gray { @apply bg-gray-700 hover:bg-gray-600; }
-        .btn-orange { @apply bg-orange-500 hover:bg-orange-400; }
-        .btn-light { @apply bg-gray-400 text-black hover:bg-gray-300; }
-    </style>
 </head>
-<body class="bg-black flex items-center justify-center min-h-screen">
-
-    <div class="bg-black p-4 rounded-lg shadow-lg w-80">
-        <div id="display" class="text-white text-5xl text-right p-4">0</div>
-
-        <div class="grid grid-cols-4 gap-2">
-            <button class="btn btn-light" onclick="clearDisplay()">AC</button>
-            <button class="btn btn-light" onclick="invertSign()">±</button>
-            <button class="btn btn-light" onclick="percentage()">%</button>
-            <button class="btn btn-orange" onclick="setOperation('/')">÷</button>
-
-            <button class="btn btn-gray" onclick="appendNumber(7)">7</button>
-            <button class="btn btn-gray" onclick="appendNumber(8)">8</button>
-            <button class="btn btn-gray" onclick="appendNumber(9)">9</button>
-            <button class="btn btn-orange" onclick="setOperation('*')">×</button>
-
-            <button class="btn btn-gray" onclick="appendNumber(4)">4</button>
-            <button class="btn btn-gray" onclick="appendNumber(5)">5</button>
-            <button class="btn btn-gray" onclick="appendNumber(6)">6</button>
-            <button class="btn btn-orange" onclick="setOperation('-')">−</button>
-
-            <button class="btn btn-gray" onclick="appendNumber(1)">1</button>
-            <button class="btn btn-gray" onclick="appendNumber(2)">2</button>
-            <button class="btn btn-gray" onclick="appendNumber(3)">3</button>
-            <button class="btn btn-orange" onclick="setOperation('+')">+</button>
-
-            <button class="btn btn-gray col-span-2 w-full" onclick="appendNumber(0)">0</button>
-            <button class="btn btn-gray" onclick="appendNumber('.')">.</button>
-            <button class="btn btn-orange" onclick="calculateResult()">=</button>
-        </div>
+<body class="flex items-center justify-center h-screen bg-black text-white">
+    <div class="flex flex-col items-center">
+        <div id="day" class="text-3xl font-semibold"></div>
+        <div id="date" class="text-xl mb-4"></div>
+        <div id="time" class="text-6xl font-bold"></div>
     </div>
 
     <script>
-        let currentInput = "";
-        let previousInput = "";
-        let operation = null;
+        function updateClock() {
+            const now = new Date();
+            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const day = days[now.getDay()];
+            const date = now.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+            const time = now.toLocaleTimeString("en-US", { hour12: false });
 
-        function appendNumber(number) {
-            if (currentInput.length < 10) {
-                if (number === "." && currentInput.includes(".")) return;
-                currentInput += number;
-                updateDisplay();
-            }
+            document.getElementById("day").textContent = day;
+            document.getElementById("date").textContent = date;
+            document.getElementById("time").textContent = time;
         }
 
-        function setOperation(op) {
-            if (currentInput === "") return;
-            if (previousInput !== "") calculateResult();
-            operation = op;
-            previousInput = currentInput;
-            currentInput = "";
-        }
-
-        function calculateResult() {
-            if (previousInput === "" || currentInput === "") return;
-            let result;
-            let num1 = parseFloat(previousInput);
-            let num2 = parseFloat(currentInput);
-
-            switch (operation) {
-                case "+": result = num1 + num2; break;
-                case "-": result = num1 - num2; break;
-                case "*": result = num1 * num2; break;
-                case "/": result = num2 !== 0 ? num1 / num2 : "Error"; break;
-            }
-
-            currentInput = result.toString().slice(0, 10);
-            previousInput = "";
-            operation = null;
-            updateDisplay();
-        }
-
-        function clearDisplay() {
-            currentInput = "";
-            previousInput = "";
-            operation = null;
-            updateDisplay();
-        }
-
-        function invertSign() {
-            if (currentInput !== "") {
-                currentInput = (parseFloat(currentInput) * -1).toString();
-                updateDisplay();
-            }
-        }
-
-        function percentage() {
-            if (currentInput !== "") {
-                currentInput = (parseFloat(currentInput) / 100).toString();
-                updateDisplay();
-            }
-        }
-
-        function updateDisplay() {
-            document.getElementById("display").innerText = currentInput || "0";
-        }
+        updateClock();
+        setInterval(updateClock, 1000);
     </script>
-
 </body>
 </html>
