@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Design Agency</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-cover bg-no-repeat bg-fixed"
+      style="background-image: url('i.jpg');">
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center text-white px-6 py-4">
+    <div class="text-2xl font-bold">Cloud</div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="flex flex-col items-center justify-center p-6 py-24 text-center">
+    <h1 class="text-5xl text-blue-500 font-extrabold mb-4">Creative Designs, Clear as the Sky</h1>
+    <p class="text-lg font-serif mb-6 max-w-3xl">Every concept, no matter how simple or complex, is carefully crafted and brought to life through striking visuals and thoughtful design. We believe that a powerful brand starts with a bold idea, and we take pride in turning those ideas into captivating brand identities.</p>
+    <a href="#contact" class="bg-blue-500 text-white hover:bg-blue-600 py-4 px-8 text-4xl rounded-full font-semibold transition cursor-pointer">Work With Us</a>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="max-w-4xl mx-auto py-20 px-6 text-center">
+    <h2 class="text-4xl font-bold border-b-2 border-black mb-6">About Us</h2>
+    <p class="font-serif text-2xl border-b-2 border-black pb-4">At Cloud Design Agency, we believe in combining creativity with strategy to build strong visual identities. With years of experience, our team crafts unique designs that make brands stand out in the crowded market. We focus on innovation, quality, and results.</p>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20 text-center">
+    <h2 class="text-4xl font-bold mb-12">Our Services</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+      <div class="p-6 bg-white rounded-3xl border-2 border-black shadow-md transition-transform duration-300 hover:scale-105">
+        <h3 class="text-2xl font-semibold border-b-2 border-black mb-4">Brand Identity</h3>
+        <p class="text-xl font-serif mt-2 mb-3">Create memorable logos and branding kits tailored to your business personality.</p>
+      </div>
+      <div class="p-6 bg-white rounded-3xl border-2 border-black shadow-md transition-transform duration-300 hover:scale-105">
+        <h3 class="text-2xl font-semibold border-b-2 border-black mb-4">Web Design</h3>
+        <p class="text-xl font-serif mt-2 mb-3">Beautiful, responsive websites designed to attract and engage your audience.</p>
+      </div>
+      <div class="p-6 bg-white rounded-3xl border-2 border-black shadow-md transition-transform duration-300 hover:scale-105">
+        <h3 class="text-2xl font-semibold border-b-2 border-black mb-4">Marketing Graphics</h3>
+        <p class="text-xl font-serif mt-2 mb-3">Eye-catching visuals for your social media, ads, and marketing campaigns.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="py-20 text-center">
+    <h2 class="text-4xl font-bold mb-12">Our Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+      
+      <a href="#" class="block transition-transform duration-300 hover:scale-105">
+        <article class="bg-white border-2 border-black rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300">
+          <img src="i.jpg" alt="Marketing Campaign" class="w-full h-48 object-cover">
+          <div class="border-t-2 border-black p-6">
+            <h3 class="text-2xl font-semibold border-b-2 border-black mb-2">Marketing Campaign</h3>
+            <p class="text-xl font-serif mt-2 mb-3">Vibrant graphics for a successful product launch.</p>
+          </div>
+        </article>
+      </a>
+      
+      <a href="#" class="block transition-transform duration-300 hover:scale-105">
+        <article class="bg-white border-2 border-black rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300">
+          <img src="i.jpg" alt="E-commerce Website" class="w-full h-48 object-cover">
+          <div class="border-t-2 border-black p-6">
+            <h3 class="text-2xl font-semibold border-b-2 border-black mb-2">E-commerce Website</h3>
+            <p class="text-xl font-serif mt-2 mb-3">Clean, functional design for an online store.</p>
+          </div>
+        </article>
+      </a>
+      
+      <a href="#" class="block transition-transform duration-300 hover:scale-105">
+        <article class="bg-white border-2 border-black rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300">
+          <img src="i.jpg" alt="Brand Redesign" class="w-full h-48 object-cover">
+          <div class="border-t-2 border-black p-6">
+            <h3 class="text-2xl font-semibold border-b-2 border-black mb-2">Brand Redesign</h3>
+            <p class="text-xl font-serif mt-2 mb-3">Modern rebranding for a growing business.</p>
+          </div>
+        </article>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-6 text-center border-b-2 border-black">
+    <h2 class="text-4xl font-bold border-b-2 border-black mb-4">Contact Us</h2>
+    <p class="text-sm font-serif mb-6">Ready to elevate your brand? Let’s collaborate!</p>
+    <form class="max-w-lg mx-auto space-y-4">
+      <input type="text" placeholder="Your Name" class="w-full p-3 rounded-lg text-black" required />
+      <input type="email" placeholder="Your Email" class="w-full p-3 rounded-lg text-black" required />
+      <textarea rows="4" placeholder="Your Message" class="w-full p-3 rounded-lg text-black" required></textarea>
+      <button type="submit" class="bg-blue-500 hover:bg-blue-600 py-3 px-8 rounded-full font-semibold transition cursor-pointer">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-black text-center py-4">
+    &copy; 2025 Cloud Design Agency. All rights reserved.
+  </footer>
+
+</body>
+                                                       </html>
