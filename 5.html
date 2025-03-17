@@ -13,8 +13,48 @@
       body {
         font-family: "Poppins", sans-serif;
       }
+
+      /* Keyframe Animations */
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in-up {
+        animation: fadeInUp 1s ease forwards;
+      }
+
+      @keyframes neonGlow {
+        0%, 100% {
+          box-shadow: 0 0 10px #9333ea, 0 0 20px #9333ea, 0 0 30px #9333ea;
+        }
+        50% {
+          box-shadow: 0 0 5px #9333ea, 0 0 10px #9333ea, 0 0 15px #9333ea;
+        }
+      }
+
+      .neon-button {
+        animation: neonGlow 2s infinite;
+      }
+
+      .floating {
+        animation: float 4s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
       .bg-hero {
-        background: url('https://images.unsplash.com/photo-1601758064226-0b5cb9300f29?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')
+        background: radial-gradient(circle at center, rgba(147, 51, 234, 0.2), rgba(0,0,0,0.9)),
+          url('https://images.unsplash.com/photo-1601758064226-0b5cb9300f29?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')
           no-repeat center;
         background-size: cover;
       }
@@ -23,8 +63,8 @@
 
   <body class="bg-black text-white">
     <!-- Navbar -->
-    <nav class="flex justify-between items-center p-6 bg-black bg-opacity-80 fixed top-0 left-0 right-0 z-50">
-      <h1 class="text-2xl font-bold">DarkDesigns</h1>
+    <nav class="flex justify-between items-center p-6 bg-black bg-opacity-90 fixed top-0 left-0 right-0 z-50 backdrop-blur-md">
+      <h1 class="text-2xl font-bold animate-pulse">DarkDesigns</h1>
       <div class="space-x-6 hidden md:flex">
         <a href="#services" class="hover:text-purple-500 transition">Services</a>
         <a href="#projects" class="hover:text-purple-500 transition">Projects</a>
@@ -49,21 +89,24 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="h-screen flex items-center justify-center bg-hero relative">
+    <section class="h-screen flex items-center justify-center bg-hero relative overflow-hidden">
       <div class="absolute inset-0 bg-black opacity-70"></div>
-      <div class="relative text-center max-w-xl px-4">
+      <!-- Floating Background Elements -->
+      <div class="absolute top-20 left-20 w-24 h-24 bg-purple-700 rounded-full opacity-30 blur-xl floating"></div>
+      <div class="absolute bottom-20 right-20 w-24 h-24 bg-purple-500 rounded-full opacity-30 blur-xl floating"></div>
+      <div class="relative text-center max-w-xl px-4 fade-in-up">
         <h2 class="text-4xl md:text-6xl font-bold mb-6">
           We Design Bold Experiences
         </h2>
         <p class="text-gray-400 mb-6">Creative solutions for visionary brands</p>
         <a href="#contact"
-          class="bg-purple-600 px-6 py-3 rounded hover:bg-purple-700 transition">Get
+          class="bg-purple-600 px-6 py-3 rounded hover:bg-purple-700 transition neon-button">Get
           Started</a>
       </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 px-8 max-w-6xl mx-auto">
+    <section id="services" class="py-20 px-8 max-w-6xl mx-auto fade-in-up">
       <h3 class="text-3xl font-bold mb-10 text-center">Our Services</h3>
       <div class="grid md:grid-cols-3 gap-8">
         <div class="bg-gray-900 p-6 rounded-lg hover:scale-105 transition">
@@ -82,7 +125,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-gray-950 px-8 max-w-6xl mx-auto">
+    <section id="projects" class="py-20 bg-gray-950 px-8 max-w-6xl mx-auto fade-in-up">
       <h3 class="text-3xl font-bold mb-10 text-center">Recent Projects</h3>
       <div class="grid md:grid-cols-3 gap-8">
         <div class="group relative overflow-hidden rounded-lg">
@@ -110,14 +153,14 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 px-8 max-w-5xl mx-auto text-center">
+    <section id="about" class="py-20 px-8 max-w-5xl mx-auto text-center fade-in-up">
       <h3 class="text-3xl font-bold mb-6">About Us</h3>
       <p class="text-gray-400 mb-6">At DarkDesigns, we blend creativity with technology to deliver bold design solutions. Our passionate team is dedicated to helping brands leave a lasting impression.</p>
-      <a href="#contact" class="bg-purple-600 px-6 py-3 rounded hover:bg-purple-700 transition">Let's Talk</a>
+      <a href="#contact" class="bg-purple-600 px-6 py-3 rounded hover:bg-purple-700 transition neon-button">Let's Talk</a>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-950 px-8 max-w-4xl mx-auto">
+    <section id="contact" class="py-20 bg-gray-950 px-8 max-w-4xl mx-auto fade-in-up">
       <h3 class="text-3xl font-bold mb-10 text-center">Contact Us</h3>
       <form class="space-y-6">
         <div class="flex flex-col">
@@ -132,7 +175,7 @@
           <label class="mb-2">Message</label>
           <textarea rows="4" class="p-3 rounded bg-black border border-gray-700 focus:border-purple-600 outline-none"></textarea>
         </div>
-        <button type="submit" class="bg-purple-600 px-6 py-3 rounded hover:bg-purple-700 transition w-full">Send Message</button>
+        <button type="submit" class="bg-purple-600 px-6 py-3 rounded hover:bg-purple-700 transition w-full neon-button">Send Message</button>
       </form>
     </section>
 
