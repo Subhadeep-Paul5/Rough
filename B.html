@@ -5,40 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Designs</title>
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
   <style>
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes zoomIn {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .animate-fadeInUp {
-      animation: fadeInUp 0.8s ease-out forwards;
-    }
-
-    .animate-zoomIn {
-      animation: zoomIn 0.8s ease-out forwards;
-    }
-
-    .hover-glow:hover {
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
-      transition: box-shadow 0.3s ease;
+    /* Optional: Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
     }
   </style>
 </head>
@@ -46,15 +20,15 @@
       style="background-image: url('i.jpg');">
 
   <!-- Hero Section -->
-  <section class="flex flex-col items-center justify-center p-6 mt-8 animate-fadeInUp">
+  <section class="flex flex-col items-center justify-center p-6 mt-8" data-aos="fade-up">
     <h1 class="text-5xl text-blue-500 font-extrabold mb-4">Simple, Clean, and Easy-to-use</h1>
     <p class="text-lg font-serif mb-6 max-w-3xl">
       We believe every idea - big or small, has the potential to stand out. We carefully shape each concept into clean, bold visuals that not only catch the eye but tell your brand’s story. Simple, thoughtful, and effective, that’s how we bring powerful identities to life.
     </p>
-    <div class="p-6 bg-white text-center rounded-3xl border-2 border-black shadow-md transition-transform duration-300 active:scale-105 animate-zoomIn hover:scale-105 hover-glow">
+    <div class="p-6 bg-white text-center rounded-3xl border-2 border-black shadow-md transition-transform duration-300 active:scale-105" data-aos="zoom-in">
       <h3 class="text-2xl font-semibold border-b-2 border-black mb-4">Wanna Book an Appointment</h3>
       <div class="flex justify-center">
-        <a href="#contact" class="bg-blue-500 text-white hover:bg-blue-600 py-2 px-6 text-lg rounded-lg font-semibold transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+        <a href="#contact" class="bg-blue-500 text-white hover:bg-blue-600 py-2 px-6 text-lg rounded-lg font-semibold transition">
           Contact here
         </a>
       </div>
@@ -62,7 +36,7 @@
   </section>
 
   <!-- About Section -->
-  <section id="about" class="py-20 p-6 animate-fadeInUp">
+  <section id="about" class="py-20 p-6" data-aos="fade-right">
     <h2 class="text-3xl font-bold border-b-2 border-black mb-4">About Us</h2>
     <p class="font-serif text-lg border-b-2 border-black mb-6">
       At Designs, we believe great design doesn't have to be complicated. We focus on creating simple, clean, and easy-to-use visuals that not only look good but also work seamlessly. Our team blends creativity with smart strategy to help brands build a strong, lasting identity. With years of experience behind us, we craft designs that cut through the noise and make your brand stand out, all while keeping things clear, effective, and user-friendly.
@@ -70,19 +44,21 @@
   </section>
 
   <!-- Services Section -->
-  <section id="services" class="py-20 text-center animate-fadeInUp">
+  <section id="services" class="py-20 text-center" data-aos="fade-up">
     <h2 class="text-4xl font-bold mb-12">Our Services</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
       <!-- Service Item -->
-      <div class="p-6 bg-white rounded-3xl border-2 border-black shadow-md transition-transform duration-300 hover:scale-105 hover-glow">
+      <div class="p-6 bg-white rounded-3xl border-2 border-black shadow-md transition-transform duration-300 active:scale-105" data-aos="zoom-in">
         <h3 class="text-2xl font-semibold border-b-2 border-black mb-4">Brand Identity</h3>
         <p class="text-xl font-serif mt-2 mb-3">Create memorable logos and branding kits tailored to your business personality.</p>
       </div>
-      <div class="p-6 bg-white rounded-3xl border-2 border-black shadow-md transition-transform duration-300 hover:scale-105 hover-glow">
+      <!-- Service Item -->
+      <div class="p-6 bg-white rounded-3xl border-2 border-black shadow-md transition-transform duration-300 active:scale-105" data-aos="zoom-in" data-aos-delay="100">
         <h3 class="text-2xl font-semibold border-b-2 border-black mb-4">Web Design</h3>
         <p class="text-xl font-serif mt-2 mb-3">Beautiful, responsive websites designed to attract and engage your audience.</p>
       </div>
-      <div class="p-6 bg-white rounded-3xl border-2 border-black shadow-md transition-transform duration-300 hover:scale-105 hover-glow">
+      <!-- Service Item -->
+      <div class="p-6 bg-white rounded-3xl border-2 border-black shadow-md transition-transform duration-300 active:scale-105" data-aos="zoom-in" data-aos-delay="200">
         <h3 class="text-2xl font-semibold border-b-2 border-black mb-4">Marketing Graphics</h3>
         <p class="text-xl font-serif mt-2 mb-3">Eye-catching visuals for your social media, ads, and marketing campaigns.</p>
       </div>
@@ -90,11 +66,11 @@
   </section>
 
   <!-- Portfolio Section -->
-  <section id="portfolio" class="py-20 text-center animate-fadeInUp">
+  <section id="portfolio" class="py-20 text-center" data-aos="fade-up">
     <h2 class="text-4xl font-bold mb-12">Our Projects</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
       <!-- Portfolio Item -->
-      <a href="#" class="block transition-transform duration-300 hover:scale-105 hover-glow">
+      <a href="#" class="block transition-transform duration-300 active:scale-105" data-aos="flip-left">
         <article class="bg-white border-2 border-black rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300">
           <img src="example.jpg" alt="Marketing Campaign" class="w-full h-48 object-cover">
           <div class="border-t-2 border-black p-6">
@@ -103,7 +79,8 @@
           </div>
         </article>
       </a>
-      <a href="#" class="block transition-transform duration-300 hover:scale-105 hover-glow">
+      <!-- Portfolio Item -->
+      <a href="#" class="block transition-transform duration-300 active:scale-105" data-aos="flip-left" data-aos-delay="100">
         <article class="bg-white border-2 border-black rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300">
           <img src="example.jpg" alt="E-commerce Website" class="w-full h-48 object-cover">
           <div class="border-t-2 border-black p-6">
@@ -112,7 +89,8 @@
           </div>
         </article>
       </a>
-      <a href="#" class="block transition-transform duration-300 hover:scale-105 hover-glow">
+      <!-- Portfolio Item -->
+      <a href="#" class="block transition-transform duration-300 active:scale-105" data-aos="flip-left" data-aos-delay="200">
         <article class="bg-white border-2 border-black rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300">
           <img src="example.jpg" alt="Brand Redesign" class="w-full h-48 object-cover">
           <div class="border-t-2 border-black p-6">
@@ -125,21 +103,30 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-20 p-6 text-center border-b-2 border-black animate-fadeInUp">
+  <section id="contact" class="py-20 p-6 text-center border-b-2 border-black" data-aos="fade-up">
     <h2 class="text-4xl font-bold border-b-2 border-black mb-4">Contact Us</h2>
     <p class="text-lg font-serif font-bold mb-6">Ready to elevate your brand? Let’s collaborate!</p>
-    <form class="max-w-lg mx-auto space-y-4">
-      <input type="text" placeholder="Your Name" class="w-full p-3 rounded-lg border-2 border-blue-500 text-black transition-transform duration-300 focus:scale-105" required>
-      <input type="email" placeholder="Your Email" class="w-full p-3 rounded-lg border-2 border-blue-500 text-black transition-transform duration-300 focus:scale-105" required>
-      <textarea rows="4" placeholder="Your Message" class="w-full p-3 rounded-lg border-2 border-blue-500 text-black transition-transform duration-300 focus:scale-105" required></textarea>
-      <button type="submit" class="text-white bg-blue-500 hover:bg-blue-600 py-2 px-6 rounded-lg font-semibold transition-transform duration-300 hover:scale-105 hover-glow">Send Message</button>
+    <form class="max-w-lg mx-auto space-y-4" data-aos="fade-up" data-aos-delay="100">
+      <input type="text" placeholder="Your Name" class="w-full p-3 rounded-lg border-2 border-blue-500 text-black" required>
+      <input type="email" placeholder="Your Email" class="w-full p-3 rounded-lg border-2 border-blue-500 text-black" required>
+      <textarea rows="4" placeholder="Your Message" class="w-full p-3 rounded-lg border-2 border-blue-500 text-black" required></textarea>
+      <button type="submit" class="text-white bg-blue-500 hover:bg-blue-600 py-2 px-6 rounded-lg font-semibold transition">Send Message</button>
     </form>
   </section>
 
   <!-- Footer -->
-  <footer class="text-black text-center py-4 animate-fadeInUp">
+  <footer class="text-black text-center py-4" data-aos="fade-up">
     &copy; 2025 Designs. All rights reserved.
   </footer>
 
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  </script>
+
 </body>
-</html>
+            </html>
